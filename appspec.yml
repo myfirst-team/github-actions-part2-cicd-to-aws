@@ -1,0 +1,5 @@
+version: 0.0
+os: linux
+files:
+  - source: s3://flash-github/*.zip
+    destination: /var/www/html/
