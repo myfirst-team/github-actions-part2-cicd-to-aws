@@ -54,7 +54,7 @@ jobs:
           env:
             aws-access-key-id     : ${{ secrets.MY_AWS_ACCESS_KEY }}
             aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region            : "us-east-1"
+            aws-region            : ${{ env.AWS_REGION_NAME }}
         - name: dployment  on codedeploy
           run:  
              aws deploy push
@@ -68,7 +68,7 @@ jobs:
           env:
             aws-access-key-id      : ${{ secrets.MY_AWS_ACCESS_KEY }}
             aws-secret-access-key  : ${{ secrets.MY_AWS_SECRET_KEY }}
-            aws-region             : "us-east-1"
+            aws-region             : ${{ env.AWS_REGION_NAME }}
         - name: deployment in instances
           run:
              aws deploy create-deployment
