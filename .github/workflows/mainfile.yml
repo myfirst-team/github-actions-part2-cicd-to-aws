@@ -15,9 +15,9 @@ env:
   AWS_REGION_NAME           : "us-east-1"
 
 on: 
-  push:
+  pull_request:
     branches: 
-      - master
+     - master
 
 jobs:
     my_ci_pipeline:
