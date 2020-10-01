@@ -52,9 +52,9 @@ jobs:
         - name: AWS Deploy push
           uses: aws-actions/configure-aws-credentials@v1
           env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.MY_AWS_ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: "us-east-1"
+            aws-access-key-id     : ${{ secrets.MY_AWS_ACCESS_KEY }}
+            aws-secret-access-key : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region            : "us-east-1"
         - name: dployment  on codedeploy
           run:  
              aws deploy push
@@ -66,9 +66,9 @@ jobs:
         - name: AWS Create Deploy
           uses: aws-actions/configure-aws-credentials@v1
           env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.MY_AWS_ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.MY_AWS_SECRET_KEY }}
-            AWS_DEFAULT_REGION: "us-east-1"
+            aws-access-key-id      : ${{ secrets.MY_AWS_ACCESS_KEY }}
+            aws-secret-access-key  : ${{ secrets.MY_AWS_SECRET_KEY }}
+            aws-region             : "us-east-1"
         - name: deployment in instances
           run:
              aws deploy create-deployment
