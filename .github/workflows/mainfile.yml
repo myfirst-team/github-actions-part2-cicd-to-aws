@@ -56,7 +56,7 @@ jobs:
             aws-region             : ${{ env.AWS_REGION_NAME }}
         - name: deployment in instances
           run:
-             aws deploy push 
+             aws deploy create-deployment
                --application-name sampleapp
                --deployment-config-name CodeDeployDefault.OneAtATime
                --deployment-group-name groupapp
