@@ -48,21 +48,6 @@ jobs:
        needs: [my_ci_pipeline]
        if: github.ref == 'refs/heads/master'
        steps:
-        - uses: actions/checkout@v1
-        - name: AWS Deploy push
-          uses: aws-actions/configure-aws-credentials@v1
-          with:
-            aws-access-key-id     : ${{ secrets.MY_AWS_ACCESS_KEY }}
-            aws-secret-access-key : ${{ secrets.MY_AWS_SECRET_KEY }}
-            aws-region            : ${{ env.AWS_REGION_NAME }}
-        - name: dployment  on codedeploy
-          run:  
-             aws deploy push
-              --application-name sampleapp
-              --description "This is a revision for the api-server"
-              --ignore-hidden-files
-              --s3-location s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/*.zip
-              --source .
         - name: AWS Create Deploy
           uses: aws-actions/configure-aws-credentials@v1
           with:
@@ -71,7 +56,7 @@ jobs:
             aws-region             : ${{ env.AWS_REGION_NAME }}
         - name: deployment in instances
           run:
-             aws deploy create-deployment
+             aws deploy push 
                --application-name sampleapp
                --deployment-config-name CodeDeployDefault.OneAtATime
                --deployment-group-name groupapp
